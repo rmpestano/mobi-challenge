@@ -15,7 +15,7 @@
 :warning-caption: :warning:
 
 image:https://travis-ci.org/rmpestano/mobi-challenge.svg[Build Status (Travis CI), link=https://travis-ci.org/rmpestano/mobi-challenge]
-image:https://sonarcloud.io/api/project_badges/measure?project=com.mobiquityinc:mobi-challenge&metric=alert_status["Sonar", link="https://sonarcloud.io/dashboard?id=com.mobiquityinc%3Amobi-challenge"]
+image:https://sonarcloud.io/api/project_badges/measure?project=rmpestano_mobi-challenge&metric=alert_status["Sonar", link="https://sonarcloud.io/dashboard?id=rmpestano_mobi-challenge"]
 
 == The solution
 

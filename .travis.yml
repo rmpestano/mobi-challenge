@@ -7,7 +7,7 @@ cache:
   - "$HOME/.m2/repository"
 script:
 - mvn clean package -Pcoverage
-- mvn sonar:sonar -Psonar -Dsonar.organization=mobi-challenge -Dsonar.host.url=https://sonarcloud.io
+- mvn sonar:sonar -Psonar -Dsonar.organization=rmpestano_mobi-challenge -Dsonar.host.url=https://sonarcloud.io
   -Dsonar.login=${SONAR_KEY}
 env:
   global:
