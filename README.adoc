@@ -1,0 +1,87 @@
+= Mobi Packing challenge
+:page-layout: base
+:source-language: java
+:icons: font
+:linkattrs:
+:sectanchors:
+:sectlink:
+:numbered:
+:doctype: book
+:toc: preamble
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+
+image:https://travis-ci.org/rmpestano/mobi-challenge.svg[Build Status (Travis CI), link=https://travis-ci.org/rmpestano/mobi-challenge]
+image:https://sonarcloud.io/api/project_badges/measure?project=com.mobiquityinc:mobi-challenge&metric=alert_status["Sonar", link="https://sonarcloud.io/dashboard?id=com.mobiquityinc%3Amobi-challenge"]
+
+== The solution
+
+Following are the steps and decisions taken in order to build the final solution
+
+
+=== Modeling the problem
+
+The first thing was to identify the entities involved on the the problem:
+
+`Item`: Represents a pack item and has three main properties: `index`, `weight` and `cost`.
+
+NOTE: A fourth attribute named `ratio` (cost/weight) was added to help on the packing algorithm
+
+`Pack`: Which consists of a `supported weight` and a list of items.
+
+IMPORTANT: Both Item and Pack are `immutable` objects which are validated at the moment they are created.
+
+NOTE: As both entities had few fields it was opted to create them via `constructor` insted of builder.
+
+=== Solving the problem
+
+Following were the classes created to help solving the problem are:
+
+`PackParser`: which parses a _String line_ to retrieve package items and package weight.
+`PackProcessor`: An interface responsible for *solving the packing problem*
+`DefaultPackProcessor`: A implementation of PackProcessor, the algorithm is documentated on source code which is basically an array permutation based on the item cost/weight ratio.
+
+
+== Usage
+
+Following is an example usage:
+
+----
+        String line = "81 : (1,53.38,€45) (2,88.62,€98) (3,78.48,€3) (4,72.30,€76) (5,30.18,€9) (6,46.34,€48)";
+
+        List<Item> items = PackParser.parseItems(line);
+
+        Double weight = PackParser.parsePackageWeight(line);
+
+        Pack packageCreated = new DefaultPackProcessor()
+                .process(items, weight);
+
+        assertThat(packageCreated)
+                .isNotNull()
+                .extracting(toStringMethod())
+                .isEqualTo("4");
+----
+
+
+Reading the items from a file located at `/home/user/sample.txt` can be done using `Packer`:
+
+----
+String pack = Packer.pack("/home/user/sample.txt");
+----
+
+== Tests
+
+Some tests were created to help modeling the solution and the implementation.
+
+[TIP]
+====
+Building the project using the `coverage` profile will generate test converage on `target/jacoco/site` folder:
+
+----
+mvn clean package -Pcoverage
+----
+
+====
