@@ -24,7 +24,7 @@ Following are the steps and decisions taken in order to build the final solution
 
 === Modeling the problem
 
-The first thing was to identify the entities involved on the the problem:
+The first step was to identify the entities involved on the the problem:
 
 `Item`: Represents a pack item and has three main properties: `index`, `weight` and `cost`.
 
@@ -34,11 +34,11 @@ NOTE: A fourth attribute named `ratio` (cost/weight) was added to help on the pa
 
 IMPORTANT: Both Item and Pack are `immutable` objects which are validated at the moment they are created.
 
-NOTE: As both entities had few fields it was opted to create them via `constructor` insted of builder.
+NOTE: As both entities had few fields it was opted to create them via `constructor` instead of using a builder.
 
 === Solving the problem
 
-Following were the classes created to help solving the problem are:
+Following were the classes created to help solving the problem:
 
 `PackParser`: which parses a _String line_ to retrieve package items and package weight.
 `PackProcessor`: An interface responsible for *solving the packing problem*
