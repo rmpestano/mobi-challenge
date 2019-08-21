@@ -30,7 +30,7 @@ The first thing was to identify the entities involved on the the problem:
 
 NOTE: A fourth attribute named `ratio` (cost/weight) was added to help on the packing algorithm
 
-`Pack`: Which consists of a `supported weight` and a list of items.
+`Pack`: Which consists of a list of items.
 
 IMPORTANT: Both Item and Pack are `immutable` objects which are validated at the moment they are created.
 
