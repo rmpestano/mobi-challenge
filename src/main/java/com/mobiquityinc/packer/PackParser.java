@@ -2,6 +2,7 @@ package com.mobiquityinc.packer;
 
 import com.mobiquityinc.model.Item;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,6 +16,11 @@ public class PackParser {
 
     private static final int MAX_PACKAGE_ITEMS = 15;
     private static final int MAX_PACKAGE_WEIGHT = 100;
+
+
+    private PackParser() {
+
+    }
 
     /**
      * Reads package items in a line <b>ignoring</b> items which weight more than the package supports
@@ -36,7 +42,7 @@ public class PackParser {
         }
         List<String> lineItems = extractLineItems(line);
         if (lineItems == null || lineItems.isEmpty()) {
-            return null; //no items found
+            return Collections.emptyList(); //no items found
         }
 
         if (lineItems.size() > MAX_PACKAGE_ITEMS) {
@@ -67,7 +73,7 @@ public class PackParser {
     }
 
     private static List<String> extractLineItems(String line) {
-        String lineWithoutPackageWeight = line.substring(line.indexOf(":") + 1);
+        String lineWithoutPackageWeight = line.substring(line.indexOf(':') + 1);
         return Stream.of(lineWithoutPackageWeight.split("[()]"))//extract all items inside parentheses
                 .filter(extractedLine -> !extractedLine.trim().isEmpty()) //the split by '[()]' leaves empty string on the resulting array so we remove them
                 .collect(Collectors.toList());
@@ -100,7 +106,7 @@ public class PackParser {
             throw new IllegalArgumentException("Package weight not found.");
         }
         try {
-            Double weight = Double.parseDouble(line.substring(0, line.indexOf(":")).trim());
+            Double weight = Double.parseDouble(line.substring(0, line.indexOf(':')).trim());
             return weight;
         } catch (NumberFormatException nfe) {
             throw new IllegalArgumentException("Invalid package weight.");

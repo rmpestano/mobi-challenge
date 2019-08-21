@@ -7,13 +7,11 @@ import java.util.List;
 
 public class Pack {
 
-    private final Double supportedWeight;
     private final List<Item> items;
     private final Double itemsCost;
     private final Double itemsWeight;
 
-    public Pack(List<Item> items, Double supportedWeight) {
-        this.supportedWeight = supportedWeight;
+    public Pack(List<Item> items) {
         this.items = Collections.unmodifiableList(items == null ? new ArrayList<>() : items);
         this.itemsCost = calculateItemsCost();
         this.itemsWeight = calculateItemsWeight();

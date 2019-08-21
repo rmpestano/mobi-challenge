@@ -10,7 +10,7 @@ import static java.lang.String.format;
 public class Item {
 
     private static final double MAX_ITEM_WEIGHT = 100;
-    private static final double MAX_ITEM_cost = 100;
+    private static final double MAX_ITEM_COST = 100;
 
     private final Integer index;
     private final Double weight;
@@ -19,7 +19,7 @@ public class Item {
 
 
     public Item(Integer index, Double weight, Double cost) {
-        this.index = index = Objects.requireNonNull(index, "Provide item index");
+        this.index = Objects.requireNonNull(index, "Provide item index");
         this.weight = Objects.requireNonNull(weight, "Provide item weight");
         this.cost = Objects.requireNonNull(cost, "Provide item cost");
 
@@ -39,8 +39,8 @@ public class Item {
         if (weight > MAX_ITEM_WEIGHT) {
             throw new IllegalArgumentException(format("Invalid item weight %s. Item should not weight more than %s.", weight, MAX_ITEM_WEIGHT));
         }
-        if (cost > MAX_ITEM_cost) {
-            throw new IllegalArgumentException(format("Invalid item cost %s. Item should not cost more than %s.", cost, MAX_ITEM_cost));
+        if (cost > MAX_ITEM_COST) {
+            throw new IllegalArgumentException(format("Invalid item cost %s. Item should not cost more than %s.", cost, MAX_ITEM_COST));
         }
     }
 

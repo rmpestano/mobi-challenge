@@ -7,8 +7,7 @@ cache:
   - "$HOME/.m2/repository"
 script:
 - mvn clean package -Pcoverage
-- mvn sonar:sonar -Psonar -Dsonar.organization=rmpestano -Dsonar.projectKey=rmpestano_mobi-challenge -Dsonar.host.url=https://sonarcloud.io
-  -Dsonar.login=${SONAR_KEY}
+- mvn sonar:sonar -Psonar -Dsonar.organization=rmpestano -Dsonar.projectKey=rmpestano_mobi-challenge -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${SONAR_KEY}
 env:
   global:
     secure: VXiJNiT5wvwauQ26UoK8zR6QmVYl7/OD8kp4i7TV5lo52ZSGqtgBcFfHm/n3hFgzKP6aLfnS6s9aQMsau0OVWLjBkJZ3i/NEvy4VMMiAupGggd+gPQToTAG+UbRNJUj23SDrMa5eQH38qqtwTAdm4qfWO1GOLJwv86y1tCl8mTorWQhvcKQv8oztghicv7Z4mfPrZoL9zGz/FyWX6KyKCSyZXevq1a/1UbF/AP4xk4kRUIXfyTZtQyIyKn5c8yczLTmH+UbIgidhopDPXYDvI0v+W/an+tmXikw/LmDme6xTkrb2+goqqLuwJNNPY1mscP/OTi+iROLYP+5HSufvwuDb/3fYHdaCBnUD0bulsHaDCvV+8xSffBsVv0REbDDrNQ5BNgQG6iaJmxkEpR6O+egwy5GNvqnp0xpaOO6uh6iQCu794OPth/5EEDnMZ6hmkTBibvxfak+6QoDnxqwJ1ANHBKQewyuFIaylOkXxEmHEsXV6+IgiQUIsQ6nwM1AiugE/myo+MpRux7IrLQgMG3l5P78dP+jPKG+5xfwIn2iTJYrXUJxLXM3YrUq+u4gzFgNOnNCym17PszzL/ATunC1EiKCh2txFLqZ8qgzCCZCUFovjDVALQNzcsodVUxUdUUZc6PzhhpdOwTtqwNeHUILvwanWXBbyvq5k1tQ7tMU=

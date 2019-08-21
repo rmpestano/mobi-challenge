@@ -19,14 +19,14 @@ public class DefaultPackProcessor implements PackProcessor {
     @Override
     public Pack process(List<Item> availableItems, Double packageWeight) {
 
-        Pack bestPack = new Pack(new ArrayList<>(), packageWeight);
+        Pack bestPack = new Pack(new ArrayList<>());
 
         availableItems.sort((item, other) -> other.getRatio().compareTo(item.getRatio())); //order items by best ratio (cost/weight) descending
         for (int i = 0; i < availableItems.size(); i++) {
             List<Item> currentPermutationItems = new ArrayList<>();
             currentPermutationItems.add(availableItems.get(i));//fix an item and permute with all other items
             permute(availableItems, currentPermutationItems, 0, i, packageWeight);
-            Pack candidatePack = new Pack(currentPermutationItems, packageWeight);
+            Pack candidatePack = new Pack(currentPermutationItems);
             if (bestPack.getItemsCost() < candidatePack.getItemsCost()) {
                 bestPack = candidatePack;
             } else if (bestPack.getItemsCost().equals(candidatePack.getItemsCost()) && bestPack.getItemsWeight() > candidatePack.getItemsWeight()) {
